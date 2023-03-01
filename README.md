@@ -19,5 +19,7 @@ Design Problem:
 
 In this fast-paced, capitalistic world, it is easy to get overwhelmed by our constant, on-the-go culture. After an extremely busy and stressful week, people need to take a break and enjoy some time to themselves. If not, as time goes on, life for people becomes more tedious and society becomes more monotonous. Sports betting offers a unique form of entertainment that combines the excitement of sports with the thrill of gambling. Whether it's placing a bet on the favorite team, following the odds and making strategic wagers, or simply enjoying the ups and downs of a game with a personal stake in the outcome, there are existing sports betting websites that provide a level of engagement and entertainment that is unmatched in other forms of gambling. However, traditional betting platforms often provide problems such as limited data availability, implicit probability distribution, and complex operation pages. These challenges make it difficult for users to make informed decisions, place winning bets, and ultimately succeed in the highly competitive sports betting industry.
 
+##test
+
 
 
