@@ -63,7 +63,7 @@ public class Main {
                         System.out.println("----------- Menu -----------");
                         System.out.println("1. Check Team Stats");
                         System.out.println("2. Start to bet");
-                        System.out.println("3. Check balance");
+                        System.out.println("3. Check balance/Deposit");
                         System.out.println("4. Back to Log in Page");
                         System.out.println("Type 1, 2, 3, or 4 to enter your choice:");
                         Scanner in = new Scanner(System.in);
@@ -73,9 +73,9 @@ public class Main {
                         } else if (userChoice.equals("2")) {
 
                         } else if (userChoice.equals("3")) {
-                            int cur_balance = user2.balance.loadBalance();
+                            
                             while(true){
-                                System.out.println("Current Balance: $" + cur_balance);
+                                System.out.println("Current Balance: $" + user2.balance.loadBalance(););
                                 System.out.println("Do you want to add money?");
                                 System.out.println("Enter Y for Yes or N or No");
                                 Scanner in2 = new Scanner(System.in);
@@ -99,7 +99,7 @@ public class Main {
                                         ex.printStackTrace();
                                     }
                                     System.out.println("$" + money + " has been deposited.");
-                                    System.out.println("Current Balance: $" + cur_balance);
+                                    
                                 } else if (userChoice2.equals("N")){
                                     break;
                                 } else {
