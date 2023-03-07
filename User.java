@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Scanner;
 
 public class User {
     public String userName;
