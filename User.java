@@ -1,5 +1,6 @@
 import java.io.*;
 
+
 public class User {
     public String userName;
     public String password;
@@ -8,12 +9,12 @@ public class User {
     public User(){
         balance = new Balance();
     }
-/////change from private to protected
+/////need to discuss private or not
     protected void createUser(String _username, String _password) throws IOException {
         this.userName = _username;
         this.password = _password;
-        this.balance.balanceAmount = 0;
-        ///write data
+        this.balance.changeBalance(0);
+        ///need to write data
         try {
             FileWriter writer = new FileWriter("FootyBettor/"+ userName+".txt");
             writer.write("Username:" + userName + ",");
@@ -25,11 +26,10 @@ public class User {
             System.out.println("Error.");
         }
     }
-    ////change from private to protected
+    /////need to discuss private or not
     protected boolean verifyUser(String _username, String _password){
         this.userName = _username;
         this.password = _password;
-        //read file
         try {
             BufferedReader readTxt = new BufferedReader(new FileReader("FootyBettor/"+userName+".txt"));
             String str = "";
@@ -39,7 +39,7 @@ public class User {
             }
             String[] array = str.split(",");
             String last = array[array.length-1];
-            this.balance.balanceAmount = Integer.parseInt(last);
+            this.balance.changeBalance(Integer.parseInt(last));
             String pwinput = "Password: " + password;
             if(array[1].equals(pwinput)){
                 return true;
@@ -55,6 +55,22 @@ public class User {
             }
         }
         return false;
+    }
+    protected int addBalance(int money){
+        balance.changeBalance(money);
+        try {
+            FileWriter writer = new FileWriter("FootyBettor/"+userName+".txt");
+            writer.write("Username:" + userName + ",");
+            writer.write("\nPassword: "+ password + ",");
+            writer.write("\nBalance" + "," + balance.loadBalance() + ",");
+            writer.flush();
+            writer.close();
+
+        }catch(IOException ex) {
+            System.out.println("Error.");
+            ex.printStackTrace();
+        }
+        return balance.loadBalance();
     }
 
 }
