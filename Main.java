@@ -75,7 +75,7 @@ public class Main {
                         } else if (userChoice.equals("3")) {
                             
                             while(true){
-                                System.out.println("Current Balance: $" + user2.balance.loadBalance(););
+                                System.out.println("Current Balance: $" + user2.balance.loadBalance());
                                 System.out.println("Do you want to add money?");
                                 System.out.println("Enter Y for Yes or N or No");
                                 Scanner in2 = new Scanner(System.in);
@@ -83,21 +83,7 @@ public class Main {
                                 if (userChoice2.equals("Y")){
                                     System.out.println("Enter the amount of money to add:");
                                     int money = in2.nextInt();
-                                    user2.balance.changeBalance(money);
-                                    //rewrite data
-
-                                    try {
-                                        FileWriter writer = new FileWriter(acc2);
-                                        writer.write("Username:" + acc_name + ",");
-                                        writer.write("\nPassword: "+ acc_pw + ",");
-                                        writer.write("\nBalance" + "," + user2.balance.loadBalance() + ",");
-                                        writer.flush();
-                                        writer.close();
-
-                                    }catch(IOException ex) {
-                                        System.out.println("Error.");
-                                        ex.printStackTrace();
-                                    }
+                                    user2.addBalance(money);
                                     System.out.println("$" + money + " has been deposited.");
                                     
                                 } else if (userChoice2.equals("N")){
