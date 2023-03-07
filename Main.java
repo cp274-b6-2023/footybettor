@@ -65,7 +65,7 @@ public class Main {
 
                     }
                 } else {
-                    System.out.println("Invalid password. Failed to log in.");
+                    System.out.println("Invalid username or password. Failed to log in.");
                 }
             } else if (choice == 3) {
                 System.out.println("Thank you for using our services.");

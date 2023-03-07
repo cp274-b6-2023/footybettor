@@ -11,31 +11,35 @@ public class GameManager {
         File acc2 = new File("FootyBettor/"+userName+".txt");
         System.out.println("Enter your password:");
         String password = scanner.next();
-        try {
-            BufferedReader readTxt = new BufferedReader(new FileReader("FootyBettor/"+userName+".txt"));
-            String str = "";
-            String text = "";
-            while ((text = readTxt.readLine()) != null){
-                str += text;
+        if(acc2.exists() == true) {
+            try {
+                BufferedReader readTxt = new BufferedReader(new FileReader("FootyBettor/" + userName + ".txt"));
+                String str = "";
+                String text = "";
+                while ((text = readTxt.readLine()) != null) {
+                    str += text;
+                }
+                String[] array = str.split(",");
+                String last = array[array.length - 1];
+                User user = new User(userName, password, Integer.parseInt(last));
+                String pwinput = "Password: " + password;
+                if (array[1].equals(pwinput)) {
+                    return user;
+                } else {
+                    return new User("", "", -10);
+                }
+            } catch (IOException ext) {
+                if (ext instanceof FileNotFoundException) {
+                    System.out.println("Account does not exist.");
+                    ext.printStackTrace();
+                } else {
+                    System.err.println("Exception " + ext);
+                }
             }
-            String[] array = str.split(",");
-            String last = array[array.length-1];
-            User user = new User(userName,password,Integer.parseInt(last));
-            String pwinput = "Password: " + password;
-            if(array[1].equals(pwinput)){
-                return user;
-            } else {
-                return new User("","",-10);
-            }
-        } catch (IOException ext){
-            if (ext instanceof FileNotFoundException){
-                System.out.println("Account does not exist.");
-                ext.printStackTrace();
-            } else {
-                System.err.println("Exception " + ext);
-            }
+        }else {
+            return new User("", "", -10);
         }
-        return new User("","",-10);
+        return new User("", "", -10);
     }
 
     public void signUp() throws IOException {
