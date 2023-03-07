@@ -8,12 +8,12 @@ public class User {
     public User(){
         balance = new Balance();
     }
-/////need to discuss private or not
+/////change from private to protected
     protected void createUser(String _username, String _password) throws IOException {
         this.userName = _username;
         this.password = _password;
         this.balance.balanceAmount = 0;
-        ///need to write data
+        ///write data
         try {
             FileWriter writer = new FileWriter("FootyBettor/"+ userName+".txt");
             writer.write("Username:" + userName + ",");
@@ -25,10 +25,11 @@ public class User {
             System.out.println("Error.");
         }
     }
-    /////need to discuss private or not
+    ////change from private to protected
     protected boolean verifyUser(String _username, String _password){
         this.userName = _username;
         this.password = _password;
+        //read file
         try {
             BufferedReader readTxt = new BufferedReader(new FileReader("FootyBettor/"+userName+".txt"));
             String str = "";
