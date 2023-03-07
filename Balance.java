@@ -1,5 +1,5 @@
 public class Balance {
-    public int balanceAmount;
+    private int balanceAmount;
     public Balance(){
         balanceAmount = 0;
     }
