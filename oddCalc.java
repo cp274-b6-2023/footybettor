@@ -3,10 +3,9 @@ public class oddCalc {
     //TeamChoice choice;
 
 
-
     int findWinPercentage(TeamStat team){
 
-        gameWon = team.getGameWon();
+        int gameWon = team.getGameWon();
 
         int winPercentage = (gameWon/38) * 100;
 
@@ -16,7 +15,7 @@ public class oddCalc {
 
     int findDrawPercentage(TeamStat team){
 
-        gameDraw = team.getGameDraw();
+        int gameDraw = team.getGameTied();
 
         int drawPercentage = (gameDraw/38) * 100;
 
@@ -25,7 +24,7 @@ public class oddCalc {
 
     int findLossPercentage(TeamStat team){
 
-        gameLoss = team.getGameLoss();
+        int gameLoss = team.getGameLost();
 
         int drawPercentage = (gameLoss/38) * 100;
 
@@ -35,14 +34,14 @@ public class oddCalc {
     public int[] findOdd(TeamChoice choice){
 
         //look at junhao code for getting a team
-        TeamStat t1 = choice.getFirstTeam();
-        TeamStat t2 = choice.getSecondTeam();
+        TeamStat t1 = choice.getT1();
+        TeamStat t2 = choice.getT2();
 
         int[] odds = new int[3];
 
-        oddTeamOneWin = (findWinPercentage(t1)+findLossPercentage(t2))/2;
-        oddTeamTwoWin = (findWinPercentage(t2) + findLossPercentage(t1))/2;
-        oddDraw = (findDrawPercentage(t1)+findDrawPercentage(t2))/2;
+        int oddTeamOneWin = (findWinPercentage(t1)+findLossPercentage(t2))/2;
+        int oddTeamTwoWin = (findWinPercentage(t2) + findLossPercentage(t1))/2;
+        int oddDraw = (findDrawPercentage(t1)+findDrawPercentage(t2))/2;
 
 
        odds[0] = oddTeamOneWin;
@@ -54,7 +53,5 @@ public class oddCalc {
 
     }
 
-    public static void main(String[] args) {
-        // what i want this code to be able to do
-    }
+
 }
