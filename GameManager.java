@@ -14,7 +14,60 @@ public class GameManager {
     }
 
 
-    public void showBalance(User user2){
+    public void showBalance(User user){
+        JFrame testFrame = new JFrame("Balance");
+        testFrame.setSize(400, 100);
+        testFrame.setResizable(false);
+        testFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        testFrame.setLocationRelativeTo(null);
+        testFrame.setLayout(new FlowLayout());
+        JLabel show_balance = new JLabel("Current Balance: $"+user.balance.loadBalance());
+        testFrame.add(show_balance);
+
+        JButton enter = new JButton("Enter");
+        JLabel text = new JLabel("Enter amount of money to add: ");
+        JTextField textBook = new JTextField(20);
+        testFrame.add(text);
+        testFrame.add(textBook);
+        enter.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String command = e.getActionCommand();
+                if ("Enter".equals(command)) {
+                    String input = textBook.getText();
+                    int money = Integer.parseInt(input);
+                    user.addBalance(money);
+                    ///new window and show money successfully added
+                    testFrame.dispose();
+                    JFrame newFrame = new JFrame();
+                    newFrame.setSize(400, 150);
+                    newFrame.setTitle("Result");
+                    newFrame.setResizable(false);
+                    newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    newFrame.setLayout(new FlowLayout());
+                    newFrame.setLocationRelativeTo(null);
+                    JLabel label = new JLabel("Money Added Successfully!");
+                    newFrame.add(label);
+                    JLabel label2 = new JLabel("Current Balance: $"+ user.balance.loadBalance());
+                    newFrame.add(label2);
+                    newFrame.setVisible(true);
+                    JButton back = new JButton("Return");
+                    newFrame.add(back);
+                    back.addActionListener(new AbstractAction() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            String command2 = e.getActionCommand();
+                            if ("Return".equals(command2)){
+                                newFrame.dispose();
+                            }
+                        }
+                    });
+                }
+            }
+
+        });
+        testFrame.add(enter);
+        testFrame.setVisible(true);
 
     }
 
