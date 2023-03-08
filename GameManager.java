@@ -138,7 +138,7 @@ public class GameManager {
     }
 
 
-    public User login(JTextField textBook, JTextField textBook2, JFrame testFrame){
+    public User login(JTextField textBook, JTextField textBook2){
         String inputUsername = textBook.getText();
         String inputPassword = textBook2.getText();
         String fileName = "FootyBettor/" + inputUsername + ".txt";
