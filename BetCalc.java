@@ -18,7 +18,10 @@ public class BetCalc {
         }
 
         else {
-            int userReturn = wager;
+            int userReturn = -wager;
+
+            //or 0 depending on how we want to calculate the change in balance
+            // ie if the wager is automatically taken out of account when the user bets vs not
 
             return userReturn;
         }
