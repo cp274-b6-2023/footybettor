@@ -51,9 +51,9 @@ public class Main {
                         Scanner in = new Scanner(System.in);
                         String userChoice = in.nextLine();
                         if (userChoice.equals("1")) {
-
+                            game.displayStat();
                         } else if (userChoice.equals("2")) {
-
+                            game.startBet();
                         } else if (userChoice.equals("3")) {
                             game.showBalance(user);
                         } else if (userChoice.equals("4")) {

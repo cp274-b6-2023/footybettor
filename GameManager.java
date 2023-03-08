@@ -67,28 +67,38 @@ public class GameManager {
             System.out.println("Account already exists.");
         }
     }
-    void displayStat(){
-
-    }
-    public void startBet(){
-        int team1;
-        int team2;
-        System.out.println("Choose a game you want to bet:");
-        for(int i = 0; i < CreateTeamData.teamList.size(); i ++){
-            int num = i +1;
-            System.out.println( num + ". "+ CreateTeamData.teamList.get(i).getTeamName());
+    public void displayStat() throws IOException {
+        CreateTeamData.addTeamStatFromFile("src/pastSeason.txt");
+        for(int i = 0; i< CreateTeamData.teamList.size(); i ++){
+            System.out.println(CreateTeamData.teamList.get(i).toString());
         }
-        System.out.println("Type team number:");
+    }
+    public void startBet() throws IOException {
+        int team1 = 0;
+        int team2 = 0;
+        CreateTeamData.addTeamStatFromFile("src/pastSeason.txt");
+        CreateFixture.addFixtureFromFile("src/pySoccer.txt");
+        System.out.println("Choose a game you want to bet:");
+        for(int i = 0; i < CreateFixture.fixtureList.size(); i ++){
+            int num = i +1;
+            System.out.println( num + ". home team:"+ CreateFixture.fixtureList.get(i).homeTeam + " away team:" +CreateFixture.fixtureList.get(i).awayTeam);
+        }
+        System.out.println("Type game number:");
         Scanner teamchoice1 = new Scanner(System.in);
         String choice1 = teamchoice1.nextLine();
-        team1 = Integer.parseInt(choice1);
-        System.out.println("Choose team 2 :");
-        for(int i = 0; i < CreateTeamData.teamList.size(); i ++){
-            System.out.println(i + ". "+ CreateTeamData.teamList.get(i).getTeamName());
+        int choice_final = Integer.parseInt(choice1);
+        String team1choice = CreateFixture.fixtureList.get(choice_final).homeTeam;
+        String team2choice = CreateFixture.fixtureList.get(choice_final).awayTeam;
+        for(int j = 0; j < CreateTeamData.teamList.size(); j ++){
+            if(team1choice.equals(CreateTeamData.teamList.get(j).teamName)){
+                team1 = j;
+            }
         }
-        Scanner teamchoice2 = new Scanner(System.in);
-        String choice2 = teamchoice2.nextLine();
-        team2 = Integer.parseInt(choice2);
+        for(int j = 0; j < CreateTeamData.teamList.size(); j ++){
+            if(team2choice.equals(CreateTeamData.teamList.get(j).teamName)){
+                team2 = j;
+            }
+        }
         TeamChoice userchoice = new TeamChoice(team1,team2);
     }
 
