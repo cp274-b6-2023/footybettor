@@ -100,6 +100,11 @@ public class GameManager {
             }
         }
         TeamChoice userchoice = new TeamChoice(team1,team2);
+        oddCalc odd = new oddCalc();
+        odd.findOdd(userchoice);
+        for(int i = 0; i < odd.findOdd(userchoice).length; i ++){
+            System.out.println(odd.findOdd(userchoice)[i]);
+        }
     }
 
     public void showBalance(User user2){
