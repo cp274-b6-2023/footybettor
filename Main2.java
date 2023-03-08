@@ -66,7 +66,7 @@ public class Main2 {
                     public void actionPerformed(ActionEvent e) {
                         String command = e.getActionCommand();
                         if ("Enter".equals(command)){
-                            User user = game.login(textBook, textBook2, testFrame);
+                            User user = game.login(textBook, textBook2);
                             if(user.balance.loadBalance() != -10 && user.balance.loadBalance() != -20){
                                 System.out.println("Access Granted!");
                                 testFrame.dispose();
