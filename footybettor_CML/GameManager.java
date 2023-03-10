@@ -2,7 +2,16 @@ import java.io.*;
 import java.util.Scanner;
 
 public class GameManager {
+    private boolean checknumber(String string){
+        boolean check = true;
+        for(int i = 0; i < string.length(); i ++){
+            if(!Character.isDigit(string.charAt(i))){
+                check = false;
+            }
+        }
 
+        return check;
+    }
     public User login(){
         Scanner scanner = new Scanner(System.in);
         Scanner sc = new Scanner(System.in);
@@ -80,99 +89,122 @@ public class GameManager {
         CreateTeamData.addTeamStatFromFile("src/pastSeason.txt");
         CreateFixture.addFixtureFromFile("src/pySoccer.txt");
         System.out.println("Choose a game you want to bet:");
-        for(int i = 0; i < CreateFixture.fixtureList.size(); i ++){
-            num = i +1;
+        for(int i = 1; i < CreateFixture.fixtureList.size(); i ++){
+            num = i;
             System.out.println( num + ". home team:"+ CreateFixture.fixtureList.get(i).homeTeam + " | away team:" + CreateFixture.fixtureList.get(i).awayTeam);
         }
-        System.out.println("Type game number:");
-        Scanner teamchoice1 = new Scanner(System.in);
-        String choice1 = teamchoice1.nextLine();
-        int choice_final = Integer.parseInt(choice1);
-        String team1choice = CreateFixture.fixtureList.get(choice_final).homeTeam;
-        String team2choice = CreateFixture.fixtureList.get(choice_final).awayTeam;
-        for(int j = 0; j < CreateTeamData.teamList.size(); j ++){
-            if(team1choice.equals(CreateTeamData.teamList.get(j).teamName)){
-                team1 = j;
-            }
-        }
-        for(int j = 0; j < CreateTeamData.teamList.size(); j ++){
-            if(team2choice.equals(CreateTeamData.teamList.get(j).teamName)){
-                team2 = j;
-            }
-        }
-        TeamChoice userchoice = new TeamChoice(team1,team2);
-        oddCalc odd = new oddCalc();
-        odd.findOdd(userchoice);
+        while (true) {
+            System.out.println("Type game number:");
+            Scanner teamchoice1 = new Scanner(System.in);
+            String choice1 = teamchoice1.nextLine();
+            if (checknumber(choice1)) {
+                int choice_final = Integer.parseInt(choice1);
+                if (choice_final > 0 && choice_final <= CreateFixture.fixtureList.size()) {
+                    String team1choice = CreateFixture.fixtureList.get(choice_final).homeTeam;
+                    String team2choice = CreateFixture.fixtureList.get(choice_final).awayTeam;
+                    for (int j = 0; j < CreateTeamData.teamList.size(); j++) {
+                        if (team1choice.equals(CreateTeamData.teamList.get(j).teamName)) {
+                            team1 = j;
+                        }
+                    }
+                    for (int j = 0; j < CreateTeamData.teamList.size(); j++) {
+                        if (team2choice.equals(CreateTeamData.teamList.get(j).teamName)) {
+                            team2 = j;
+                        }
+                    }
+                    TeamChoice userchoice = new TeamChoice(team1, team2);
+                    oddCalc odd = new oddCalc();
+                    odd.findOdd(userchoice);
+                    while(true) {
+                        System.out.println("Predict the result:");
+                        System.out.println("1. " + CreateTeamData.teamList.get(team1).teamName + " win. Odds: " + odd.findOdd(userchoice)[0]);
+                        System.out.println("2. " + CreateTeamData.teamList.get(team2).teamName + " win. Odds: " + odd.findOdd(userchoice)[1]);
+                        System.out.println("3. This is a draw. Odds:" + odd.findOdd(userchoice)[2]);
+                        System.out.println("Type 1, 2, or 3 to choose a result:");
+                        Scanner resultchoice = new Scanner(System.in);
+                        String result = resultchoice.nextLine();
+                        if (result.equals("1") || result.equals("2") || result.equals("3")) {
+                            int userresult = Integer.parseInt(result);
+                            int actual_result = 0;
+                            String actualresult = CreateFixture.fixtureList.get(choice_final).winner;
+                            if (actualresult.equals("H")) {
+                                actual_result = 1;
+                            } else if (actualresult.equals("A")) {
+                                actual_result = 2;
+                            } else if (actualresult.equals("D")) {
+                                actual_result = 3;
+                            } else {
 
-        System.out.println("Choose a result:");
-        System.out.println("1. "+ CreateTeamData.teamList.get(team1).teamName + " win. Odds: " + odd.findOdd(userchoice)[0]);
-        System.out.println("2. "+ CreateTeamData.teamList.get(team2).teamName + " win. Odds: " + odd.findOdd(userchoice)[1]);
-        System.out.println("3. This is a draw. Odds:" + odd.findOdd(userchoice)[2]);
-        System.out.println("Type result number:");
-        Scanner resultchoice = new Scanner(System.in);
-        String result = resultchoice.nextLine();
-        int userresult = Integer.parseInt(result);
-        int actual_result = 0;
-        String actualresult = CreateFixture.fixtureList.get(choice_final).winner;
-        if(actualresult.equals("H")){
-            actual_result = 1;
-        }else if(actualresult.equals("A")){
-            actual_result = 2;
-        }else if(actualresult.equals("D")){
-            actual_result = 3;
-        }else{
+                            }
+                            while (true) {
+                                System.out.println("Enter Wager(the amount of money to bet):");
+                                Scanner wagerchoice = new Scanner(System.in);
+                                String wager = resultchoice.nextLine();
+                                if (checknumber(wager)) {
+                                    float userwager = Float.parseFloat(wager);
+                                    if (user.balance.loadBalance() >= userwager) {
+                                        BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
 
-        }
-        while(true) {
-            System.out.println("Wager:");
-            Scanner wagerchoice = new Scanner(System.in);
-            String wager = resultchoice.nextLine();
-            float userwager = Float.parseFloat(wager);
-            if (user.balance.loadBalance() > userwager) {
-                BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
-
-                System.out.println("Result:");
-                System.out.println("You won:" + betcalc.calcReturn());
-                user.addBalance(betcalc.calcReturn());
+                                        System.out.println("Result:");
+                                        System.out.println("You won: $" + betcalc.calcReturn());
+                                        user.addBalance(betcalc.calcReturn());
+                                        break;
+                                    } else {
+                                        System.out.println("Not enough money");
+                                        System.out.println("Do you want to recharge or return to the previous window?");
+                                        System.out.println("1.recharge");
+                                        System.out.println("2.return");
+                                        System.out.println("Type a option number:");
+                                        Scanner optionchoice = new Scanner(System.in);
+                                        String option = optionchoice.nextLine();
+                                        int useroption = Integer.parseInt(option);
+                                        if (useroption == 1) {
+                                            System.out.println("Enter the amount of money to add:");
+                                            Scanner in2 = new Scanner(System.in);
+                                            float money = in2.nextInt();
+                                            user.addBalance(money);
+                                        } else if (useroption == 2) {
+                                        }
+                                    }
+                                } else {
+                                    System.out.println("Invalid choice");
+                                }
+                            }
+                            break;
+                        } else {
+                            System.out.println("Invalid choice");
+                        }
+                    }
+                }else{
+                    System.out.println("Invalid choice");
+                }
                 break;
             } else {
-                System.out.println("No enough money");
-                System.out.println("Do you want to recharge or return to the previous window?");
-                System.out.println("1.recharge");
-                System.out.println("2.return");
-                System.out.println("Type a option number:");
-                Scanner optionchoice = new Scanner(System.in);
-                String option = optionchoice.nextLine();
-                int useroption = Integer.parseInt(option);
-                if (useroption == 1) {
-                    System.out.println("Enter the amount of money to add:");
-                    Scanner in2 = new Scanner(System.in);
-                    float money = in2.nextInt();
-                    user.addBalance(money);
-                } else if (useroption == 2){
-                }
+                System.out.println("Invalid choice");
             }
+
         }
     }
 
     public void showBalance(User user2){
-        while(true){
-            System.out.println("Current Balance: $" + user2.balance.loadBalance());
-            System.out.println("Do you want to add money?");
-            System.out.println("Enter Y for Yes or N or No");
-            Scanner in = new Scanner(System.in);
-            Scanner in2 = new Scanner(System.in);
-            String userChoice2 = in.nextLine();
-            if (userChoice2.equals("Y")){
-                System.out.println("Enter the amount of money to add:");
-                float money = in2.nextInt();
-                user2.addBalance(money);
-            } else if (userChoice2.equals("N")){
-                break;
-            } else {
-                System.out.println("Invalid choice.");
+            while (true) {
+                System.out.println("Current Balance: $" + user2.balance.loadBalance());
+                System.out.println("Do you want to add money?");
+                System.out.println("Enter Y for Yes or N or No");
+                Scanner in = new Scanner(System.in);
+                Scanner in2 = new Scanner(System.in);
+                String userChoice2 = in.nextLine();
+                if (userChoice2.equals("Y")) {
+                    System.out.println("Enter the amount of money to add:");
+                    float money = in2.nextFloat();
+                    user2.addBalance(money);
+                } else if (userChoice2.equals("N")) {
+                    break;
+                } else {
+                    System.out.println("Invalid choice.");
+                }
             }
-        }
     }
+
 
 }
