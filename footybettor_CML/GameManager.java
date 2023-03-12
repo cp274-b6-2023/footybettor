@@ -165,7 +165,11 @@ public class GameManager {
                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
 
                                         System.out.println("Result:");
-                                        System.out.println("You won: $" + betcalc.calcReturn());
+                                        if(betcalc.calcReturn()>0) {
+                                            System.out.println("You won: $" + betcalc.calcReturn());
+                                        }else{
+                                            System.out.println("You lost: $" + betcalc.calcReturn()*(-1));
+                                        }
                                         user.addBalance(betcalc.calcReturn());
                                         break;
                                     } else {
