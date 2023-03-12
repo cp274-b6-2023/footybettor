@@ -3,7 +3,7 @@ public class oddCalc {
     //TeamChoice choice;
 
 
-    float findWinPercentage(TeamStat team){
+    private float findWinPercentage(TeamStat team){
 
         float gameWon = team.getGameWon();
 
@@ -13,7 +13,7 @@ public class oddCalc {
 
     }
 
-    float findDrawPercentage(TeamStat team){
+    private float findDrawPercentage(TeamStat team){
 
         float gameDraw = team.getGameTied();
 
@@ -22,7 +22,7 @@ public class oddCalc {
         return drawPercentage;
     }
 
-    float findLossPercentage(TeamStat team){
+    private float findLossPercentage(TeamStat team){
 
         float gameLoss = team.getGameLost();
 
