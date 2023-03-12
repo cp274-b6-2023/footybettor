@@ -1,17 +1,24 @@
 import java.io.*;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GameManager {
     private boolean checknumber(String string){
-        boolean check = true;
-        for(int i = 0; i < string.length(); i ++){
-            if(!Character.isDigit(string.charAt(i))){
-                check = false;
-            }
+        //boolean check = true;
+        //for(int i = 0; i < string.length(); i ++){
+          //  if(!Character.isDigit(string.charAt(i))){
+            //    check = false;
+            //}
+        //}
+        Pattern pattern = Pattern.compile("[0-9]*\\.?[0-9]+");
+        Matcher matcher = pattern.matcher(string);
+        if(!matcher.matches()){
+            return false;
         }
-
-        return check;
+        return true;
     }
+
     public User login(){
         Scanner scanner = new Scanner(System.in);
         Scanner sc = new Scanner(System.in);
@@ -207,9 +214,17 @@ public class GameManager {
             Scanner in2 = new Scanner(System.in);
             String userChoice2 = in.nextLine();
             if (userChoice2.equals("Y") || userChoice2.equals("y")) {
-                System.out.println("Enter the amount of money to add:");
-                float money = in2.nextFloat();
-                user2.addBalance(money);
+                while(true) {
+                    System.out.println("Enter the amount of money to add:");
+                    String usermoney = in2.nextLine();
+                    if(checknumber(usermoney)) {
+                        float money = Float.parseFloat(usermoney);
+                        user2.addBalance(money);
+                        break;
+                    }else{
+                        System.out.println("Invalid amount entered.");
+                        }
+                }
             } else if (userChoice2.equals("N") || userChoice2.equals("n")) {
                 break;
             } else {
