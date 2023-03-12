@@ -167,6 +167,7 @@ public class GameManager {
                                         System.out.println("Result:");
                                         if(betcalc.calcReturn()>0) {
                                             System.out.println("You won: $" + betcalc.calcReturn());
+                                            user.addBalance(userwager*(-1));
                                         }else{
                                             System.out.println("You lost: $" + betcalc.calcReturn()*(-1));
                                         }
