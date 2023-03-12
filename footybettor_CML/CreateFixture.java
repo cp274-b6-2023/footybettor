@@ -28,9 +28,5 @@ public class CreateFixture {
     public static void addFixtureToList(Fixture fix){
         fixtureList.add(fix);
     }
-    public static void displyFixtutes(){
-        for(Fixture f : fixtureList){
-            System.out.println(f);
-        }
-    }
+    
 }
