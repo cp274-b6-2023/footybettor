@@ -33,9 +33,4 @@ public class CreateTeamData {
         teamList.add(teamStat);
     }
 
-    public static void displayTeamList(){
-        for(TeamStat t : teamList){
-            System.out.println(t);
-        }
-    }
 }
