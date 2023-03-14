@@ -18,7 +18,7 @@ public class GameManager {
         }
         return true;
     }
-    void displayStat() throws IOException {
+    public void displayStat() throws IOException {
         JFrame Team = new JFrame();
         Team.setTitle("Team Stats");
         Team.setSize(1000, 500);
