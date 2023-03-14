@@ -1,5 +1,5 @@
-Man United,21,6,11
 Man City,27,6,5
+Man United,21,6,11
 Liverpool,20,9,9
 Chelsea,19,9,10
 Leicester,20,12,6

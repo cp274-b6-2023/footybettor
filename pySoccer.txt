@@ -1,4 +1,3 @@
-,Season,HomeTeam,AwayTeam,FTR,
 1,2020-21,Fulham,Arsenal,A,
 2,2020-21,Crystal Palace,Southampton,H,
 3,2020-21,Liverpool,Leeds,H,

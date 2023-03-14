@@ -1,14 +1,17 @@
 public class Fixture {
-    public String homeTeam;
-    public String awayTeam;
-    public String winner;
+    private String homeTeam;
+    private String awayTeam;
+    private String winner;
+    //private int fixID;
 
     public Fixture(String home, String away, String result){
+        //this.fixID = id;
         this.homeTeam = home;
         this.awayTeam = away;
         this.winner = result;
     }
 
+    //public int getFixID(){ return  this.fixID; }
     public String getHomeTeam(){
         return this.homeTeam;
     }
