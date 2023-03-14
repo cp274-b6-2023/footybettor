@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ public class CreateTeamData {
     public static void addTeamStatFromFile(String filename) throws IOException {
 
         file = filename;
-
+        teamList.clear();
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line = br.readLine();
 

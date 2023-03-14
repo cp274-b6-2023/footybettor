@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ public class CreateFixture {
 
     public static void addFixtureFromFile(String filename) throws IOException {
         //fixtureFile = filename;
-
+        fixtureList.clear();
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String Line = br.readLine();
 
