@@ -5,13 +5,22 @@ import java.sql.SQLException;
 
 public class DBTest {
 
-    static Connection connect = null;
+    //private static Connection connect = null;
+
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
-        CreateFixture.makeFixToDBConn();
-        //CreateFixture.makeSQLFixtureTable("pySoccer.txt");
+//        CreateFixture.makeFixToDBConn();
+//        //CreateFixture.makeSQLFixtureTable("pySoccer.txt");
+//
+//        CreateFixture.addSQLToFixtureList();
+//        CreateFixture.showFixtureList();
 
-        CreateFixture.addSQLToList();
-        CreateFixture.showFixtureList();
+
+        CreateTeamData.makeTeamStatToDBConn();
+        //CreateTeamData.makeSQLTeamStatTable("pastSeason.txt");
+
+        CreateTeamData.addSQLToTeamList();
+        //CreateTeamData.showTeamStatFromSQL();
+        CreateTeamData.showTeamList();
     }
 }
