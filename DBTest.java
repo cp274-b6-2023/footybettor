@@ -9,18 +9,18 @@ public class DBTest {
 
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
-//        CreateFixture.makeFixToDBConn();
+        CreateFixture.makeFixToDBConn();
 //        //CreateFixture.makeSQLFixtureTable("pySoccer.txt");
 //
-//        CreateFixture.addSQLToFixtureList();
-//        CreateFixture.showFixtureList();
+        CreateFixture.addSQLToFixtureList();
+        CreateFixture.showFixtureList();
 
 
-        CreateTeamData.makeTeamStatToDBConn();
+        //CreateTeamData.makeTeamStatToDBConn();
         //CreateTeamData.makeSQLTeamStatTable("pastSeason.txt");
 
-        CreateTeamData.addSQLToTeamList();
+        //CreateTeamData.addSQLToTeamList();
         //CreateTeamData.showTeamStatFromSQL();
-        CreateTeamData.showTeamList();
+        //CreateTeamData.showTeamList();
     }
 }

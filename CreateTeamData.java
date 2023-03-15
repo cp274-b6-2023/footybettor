@@ -114,6 +114,8 @@ public class CreateTeamData {
         String teamName;
         int winNum, lossNum, drawNum;
 
+        teamList.clear();
+
         for(int i = 0; i < 20; i++){
             teamName = team_arr[i];
             winNum = win_arr[i];
