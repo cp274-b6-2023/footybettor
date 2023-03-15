@@ -1,55 +1,52 @@
 public class oddCalc {
 
-    //TeamChoice choice;
 
+    float findWinPercentage(TeamStat team){
 
-    int findWinPercentage(TeamStat team){
+        float gameWon = team.getGameWon();
 
-        int gameWon = team.getGameWon();
-
-        int winPercentage = (gameWon/38) * 100;
+        float winPercentage = (gameWon/38) * 100;
 
         return winPercentage;
 
     }
 
-    int findDrawPercentage(TeamStat team){
+    float findDrawPercentage(TeamStat team){
 
-        int gameDraw = team.getGameTied();
+        float gameDraw = team.getGameTied();
 
-        int drawPercentage = (gameDraw/38) * 100;
-
-        return drawPercentage;
-    }
-
-    int findLossPercentage(TeamStat team){
-
-        int gameLoss = team.getGameLost();
-
-        int drawPercentage = (gameLoss/38) * 100;
+        float drawPercentage = (gameDraw/38) * 100;
 
         return drawPercentage;
     }
 
-    public int[] findOdd(TeamChoice choice){
+    float findLossPercentage(TeamStat team){
 
-        //look at junhao code for getting a team
-        TeamStat t1 = choice.getT1();
-        TeamStat t2 = choice.getT2();
+        float gameLoss = team.getGameLost();
 
-        int[] odds = new int[3];
+        float drawPercentage = (gameLoss/38) * 100;
 
-        int oddTeamOneWin = (findWinPercentage(t1)+findLossPercentage(t2))/2;
-        int oddTeamTwoWin = (findWinPercentage(t2) + findLossPercentage(t1))/2;
-        int oddDraw = (findDrawPercentage(t1)+findDrawPercentage(t2))/2;
+        return drawPercentage;
+    }
+
+    public float[] findOdd(TeamChoice choice){
+
+        TeamStat t1 = choice.t1;
+        TeamStat t2 = choice.t2;
+
+        float[] odds = new float[3];
+
+        float oddTeamOneWin = (2*findWinPercentage(t1)+findLossPercentage(t2))/3;
+        float oddTeamTwoWin = (1/2*findWinPercentage(t2) + findLossPercentage(t1))/(3/2);
+        float oddDraw = 100 - oddTeamOneWin - oddTeamTwoWin;
 
 
-       odds[0] = oddTeamOneWin;
-       odds[1] = oddTeamTwoWin;
-       odds[2] = oddDraw;
+        odds[0] = oddTeamOneWin;
+        odds[1] = oddTeamTwoWin;
+        odds[2] = oddDraw;
 
 
-       return odds;
+        return odds;
 
     }
 
