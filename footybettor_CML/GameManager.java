@@ -171,22 +171,54 @@ public class GameManager {
                                     }
                                     while (true) {
                                         System.out.println("Enter Wager(the amount of money to bet):");
-                                        Scanner wagerchoice = new Scanner(System.in);
                                         String wager = resultchoice.nextLine();
                                         if (checknumber(wager)) {
                                             float userwager = Float.parseFloat(wager);
                                             if (user.balance.loadBalance() >= userwager) {
-                                                BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
-
-                                                System.out.println("Result:");
-                                                if (betcalc.calcReturn() > 0) {
-                                                    System.out.println("You won: $" + betcalc.calcReturn());
-                                                    user.addBalance(userwager * (-1));
-                                                } else {
-                                                    System.out.println("You lost: $" + betcalc.calcReturn() * (-1));
+                                                while(true) {
+                                                    System.out.println("Do you want to donate or add insurance?");
+                                                    System.out.println("1. Add insurance.");
+                                                    System.out.println("2. Donate");
+                                                    System.out.println("3. Both");
+                                                    System.out.println("4. No");
+                                                    System.out.println("Type 1, 2, 3, or 4 to choose:");
+                                                    String userdecorator = resultchoice.nextLine();
+                                                    if(userdecorator.equals("1") || userdecorator.equals("2") || userdecorator.equals("3")|| userdecorator.equals("4")){
+                                                        float fee = 0;
+                                                        float donate = 0;
+                                                        Bet bet = new BasicBet();
+                                                        if(userdecorator.equals("1")){
+                                                            Bet bet_insurance = new InsuranceDecorator(bet);
+                                                            fee = bet_insurance.bet(userwager);
+                                                        }else if (userdecorator.equals("2")){
+                                                            Bet bet_donate = new DonateDecorator(bet);
+                                                            donate = bet_donate.bet(userwager);
+                                                        }else if(userdecorator.equals("3")){
+                                                            Bet bet_donate = new DonateDecorator(bet);
+                                                            Bet bet_insurance = new InsuranceDecorator(bet);
+                                                            donate = bet_donate.bet(userwager);
+                                                            fee = bet_insurance.bet(userwager);
+                                                        }else if(userdecorator.equals("4")){
+                                                            fee = bet.bet(userwager);
+                                                        }
+                                                        BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
+                                                        System.out.println("Result:");
+                                                        if (betcalc.calcReturn() > 0) {
+                                                            System.out.println("You won: $" + betcalc.calcReturn());
+                                                            user.addBalance(userwager * (-1));
+                                                            user.addBalance(fee*(-1));
+                                                            user.addBalance(donate*(-1));
+                                                        } else {
+                                                            System.out.println("You lost: $" + betcalc.calcReturn() * (-1));
+                                                            user.addBalance(fee*(-1));
+                                                        }
+                                                        user.addBalance(betcalc.calcReturn());
+                                                        System.out.println("Current Balance: $" + user.balance.loadBalance());
+                                                        break;
+                                                    }else{
+                                                        System.out.println("Invalid choice");
+                                                    }
                                                 }
-                                                user.addBalance(betcalc.calcReturn());
-                                                System.out.println("Current Balance: $" + user.balance.loadBalance());
                                                 break;
                                             } else {
                                                 System.out.println("Not enough money");
