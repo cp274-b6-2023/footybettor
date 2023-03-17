@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 public class Main {
     private static String foldername;
     private static User user = null;
@@ -311,50 +314,49 @@ public class Main {
         frame.setVisible(true);
     }
     private static boolean fixtureExists() throws SQLException, ClassNotFoundException {
-        boolean b;
+        boolean bool;
         makeDBMainConn();
-        //Statement st = conn.createStatement();
-        String q = "SELECT IF( EXISTS( SELECT * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'fixture'), 1, 0)";
-        statement = conn.prepareStatement(q);
-        ResultSet rs = statement.executeQuery(q);
-        if (rs.next()) {
-            b = true;
-        } else {
-            b = false;
-        }
-        return b;
+        DatabaseMetaData dbm = conn.getMetaData();
+        ResultSet rs = dbm.getTables(null, null, "fixture", null);
+        if(rs.next()){
+            bool = TRUE;
+        } else {bool = FALSE; }
+        return bool;
     }
     private static boolean teamStatExists() throws SQLException, ClassNotFoundException {
         boolean b;
         makeDBMainConn();
-        String q = "SELECT IF( EXISTS( SELECT * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'teamstat'), 1, 0)";
-        statement = conn.prepareStatement(q);
-        ResultSet rs = statement.executeQuery(q);
+        DatabaseMetaData dbm = conn.getMetaData();
+        //String q = "SELECT IF( EXISTS( SELECT * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'teamstat'), 1, 0)";
+        //statement = conn.prepareStatement(q);
+        ResultSet rs = dbm.getTables(null,null,"teamstat", null);
         if(rs.next()){
-            b = true;
-        } else { b = false; }
+            b = TRUE;
+        } else { b = FALSE; }
         return b;
     }
     private static boolean userAccountExists() throws SQLException, ClassNotFoundException {
         boolean b;
         makeDBMainConn();
-        String q = "SELECT IF( EXISTS( SELECT * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'useraccount'), 1, 0)";
-        statement = conn.prepareStatement(q);
-        ResultSet rs = statement.executeQuery(q);
+        DatabaseMetaData dbm = conn.getMetaData();
+        //String q = "SELECT IF( EXISTS( SELECT * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'useraccount'), 1, 0)";
+        //statement = conn.prepareStatement(q);
+        ResultSet rs = dbm.getTables(null,null,"useraccount", null);
         if(rs.next()){
-            b = true;
-        } else { b = false; }
+            b = TRUE;
+        } else { b = FALSE; }
         return b;
     }
     private static boolean gameTrackExists() throws SQLException, ClassNotFoundException {
         boolean b;
         makeDBMainConn();
-        String q = "SELECT IF( EXISTS( SELECT * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'gametrack'), 1, 0)";
-        statement = conn.prepareStatement(q);
-        ResultSet rs = statement.executeQuery(q);
+        DatabaseMetaData dbm = conn.getMetaData();
+        //String q = "SELECT IF( EXISTS( SELECT * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'gametrack'), 1, 0)";
+        //statement = conn.prepareStatement(q);
+        ResultSet rs = dbm.getTables(null,null,"gametrack", null);
         if(rs.next()){
-            b = true;
-        } else { b = false; }
+            b = TRUE;
+        } else { b = FALSE; }
         return b;
     }
     private static void makeDBMainConn() throws ClassNotFoundException, SQLException {
