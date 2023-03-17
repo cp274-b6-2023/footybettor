@@ -1,79 +1,292 @@
-//import java.io.*;
-//import java.util.Scanner;
-//
-//public class Main {
-//    private static String foldername;
-//    private static String filename;
-//
-//    public static boolean createfolder(String path) {
-//        File file = null;
-//        try {
-//            file = new File(path);
-//            if (!file.exists()) {
-//                return file.mkdirs();
-//            }else {
-//                return false;
-//            }
-//        }catch(Exception e) {
-//        }return false;
-//    }
-//
-//    public static void main(String[] args) throws IOException {
-//        foldername = "FootyBettor";
-//        GameManager game = new GameManager();
-//        if(createfolder(foldername)){
-//            System.out.println("Folder created!");
-//        } else {
-//            System.out.println("Folder exists.");
-//        }
-//        while(true){
-//            System.out.println("\n--------Welcome the Sport Betting Platform---------\n");
-//            System.out.println("1) Sign up");
-//            System.out.println("2) Log in");
-//            System.out.println("3) Quit");
-//            System.out.println("Please type 1, 2, or 3 to enter your choice:");
-//            Scanner scanner = new Scanner(System.in);
-//            String choice = scanner.nextLine();
-//            if (choice.equals("1")){
-//                game.signUp();
-//            } else if (choice.equals("2")){
-//                User user = game.login();
-//                if(user.balance.loadBalance() != -10) {
-//                    System.out.println("Successfully Log in!");
-//                    Boolean quit = true;
-//                    while (quit) {
-//                        System.out.println("----------- Menu -----------");
-//                        System.out.println("1. Check Team Stats");
-//                        System.out.println("2. Start to bet");
-//                        System.out.println("3. Check balance/Deposit");
-//                        System.out.println("4. Back to Log in Page");
-//                        System.out.println("Type 1, 2, 3, or 4 to enter your choice:");
-//                        Scanner in = new Scanner(System.in);
-//                        String userChoice = in.nextLine();
-//                        if (userChoice.equals("1")) {
-//                            game.displayStat();
-//                        } else if (userChoice.equals("2")) {
-//                            game.startBet(user);
-//                        } else if (userChoice.equals("3")) {
-//                            game.showBalance(user);
-//                        } else if (userChoice.equals("4")) {
-//                            quit = false;
-//                            break;
-//                        } else {
-//                            System.out.println("Invalid input.");
-//                        }
-//
-//                    }
-//                } else {
-//                    System.out.println("Invalid username or password. Failed to log in.");
-//                }
-//            } else if (choice.equals("3")) {
-//                System.out.println("Thank you for using our services.");
-//                break;
-//            } else {
-//                System.out.println("Invalid choice. Please try again.");
-//            }
-//        }
-//
-//    }
-//}
+import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+
+public class Main {
+    private static String foldername;
+    private static User user = null;
+
+    public static boolean createfolder(String path) {
+        File file = null;
+        try {
+            file = new File(path);
+            if (!file.exists()) {
+                return file.mkdirs();
+            }else {
+                return false;
+            }
+        }catch(Exception e) {
+        }return false;
+    }
+
+    public static void main(String[] args) throws IOException {
+        foldername = "FootyBettor";
+        GameManager game = new GameManager();
+
+        if(createfolder(foldername)){
+            System.out.println("Folder created!");
+        } else {
+            System.out.println("Folder exists.");
+        }
+        JFrame frame = new JFrame();
+        frame.setTitle("FootyBettor");
+        frame.setSize(500, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.getContentPane().setBackground(Color.WHITE);
+        frame.setLayout(new FlowLayout());
+        //frame.add(new JLabel(new ImageIcon("src/Logo.png")));
+        JLabel label2 = new JLabel("Welcome to FootyBettor", JLabel.CENTER);
+        label2.setFont(new Font("Verdana", Font.BOLD, 20));
+
+        JButton logIn = new JButton("Log in");
+        logIn.setBounds(800,800, 800, 800);
+        logIn.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame testFrame = new JFrame("LOG IN");
+                testFrame.setSize(400, 150);
+                testFrame.setResizable(false);
+                testFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                testFrame.setLocationRelativeTo(null);
+                testFrame.setLayout(new FlowLayout());
+
+                JButton enter = new JButton("Enter");
+                JLabel text = new JLabel("Enter username:");
+                JTextField textBook = new JTextField(20);
+                testFrame.add(text);
+                testFrame.add(textBook);
+                JLabel text2 = new JLabel("Enter password:");
+                JTextField textBook2 = new JTextField(20);
+                testFrame.add(text2);
+                testFrame.add(textBook2);
+                testFrame.add(enter);
+                enter.addActionListener(new AbstractAction() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String command = e.getActionCommand();
+                        if ("Enter".equals(command)){
+
+                            try {
+                                user = game.login(textBook, textBook2);
+                            } catch (SQLException ex) {
+                                throw new RuntimeException(ex);
+                            } catch (ClassNotFoundException ex) {
+                                throw new RuntimeException(ex);
+                            }
+                            if(user.balance.loadBalance() != -10 && user.balance.loadBalance() != -20){
+                                System.out.println("Access Granted!");
+
+                                testFrame.dispose();
+                                frame.dispose();
+
+                                //////start a new frame to display dashboard
+                                JFrame frame = new JFrame();
+                                frame.setTitle("Sport Betting Platform");
+                                frame.setSize(500, 300);
+                                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                frame.setResizable(false);
+                                frame.getContentPane().setBackground(Color.WHITE);
+                                // the box layout will be from top to bottom
+                                frame.setLayout(new FlowLayout());
+                                JLabel label = new JLabel("Welcome to Sport Betting Platform", JLabel.CENTER);
+                                // set font style and size
+                                label.setFont(new Font("Verdana", Font.BOLD, 20));
+
+                                JButton show_team_stats = new JButton("View Team Stats");
+                                show_team_stats.setBounds(800,800, 800, 800);
+                                show_team_stats.addActionListener(new AbstractAction() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        try {
+                                            game.displayStat();
+                                        } catch (IOException ex) {
+                                            throw new RuntimeException(ex);
+                                        } catch (SQLException ex) {
+                                            throw new RuntimeException(ex);
+                                        } catch (ClassNotFoundException ex) {
+                                            throw new RuntimeException(ex);
+                                        }
+                                    }
+                                });
+
+                                JButton bet1 = new JButton("Start to bet with game number");
+                                bet1.setBounds(800,800, 800, 800);
+                                User finalUser = user;
+                                User finalUser1 = user;
+                                bet1.addActionListener(new AbstractAction() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        try {
+                                            game.startBet1(user);
+                                        } catch (IOException ex) {
+                                            throw new RuntimeException(ex);
+                                        } catch (SQLException ex) {
+                                            throw new RuntimeException(ex);
+                                        } catch (ClassNotFoundException ex) {
+                                            throw new RuntimeException(ex);
+                                        }
+                                    }
+                                });
+
+                                JButton bet2 = new JButton("Start to bet with team names");
+                                bet2.setBounds(800,800, 800, 800);
+                                bet2.addActionListener(new AbstractAction() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        try {
+                                            game.startBet2(user);
+                                        } catch (IOException ex) {
+                                            throw new RuntimeException(ex);
+                                        } catch (SQLException ex) {
+                                            throw new RuntimeException(ex);
+                                        } catch (ClassNotFoundException ex) {
+                                            throw new RuntimeException(ex);
+                                        }
+                                    }
+                                });
+
+
+                                JButton check_balance = new JButton("Check Balance/ Deposit");
+                                check_balance.setBounds(800,800, 800, 800);
+                                check_balance.addActionListener(new AbstractAction() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        game.showBalance(user);
+                                    }
+                                });
+
+                                JButton exit = new JButton("Exit Program");
+                                exit.addActionListener(new AbstractAction() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        //confirm before leave or exit the program
+                                        String command = e.getActionCommand();
+                                        UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Verdana", Font.PLAIN, 13)));
+                                        UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("Verdana", Font.PLAIN, 13)));
+                                        if ("Exit Program".equals(command)) {
+                                            Object[] options = { "Confirm", "Cancel" };
+                                            int response = JOptionPane.showOptionDialog(frame, "Do you want to exit?", "", JOptionPane.YES_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                                            if (response == 0) {
+                                                System.exit(0);
+                                            }
+                                        }
+                                    }
+                                });
+                                frame.add(label);
+                                frame.add(check_balance);
+                                frame.add(show_team_stats);
+                                frame.add(bet1);
+                                frame.add(bet2);
+                                frame.add(exit);
+                                frame.setVisible(true);
+
+                            } else if (user.balance.loadBalance() == -10){
+                                //account does exist, but wrong password
+                                testFrame.dispose();
+                                JFrame newFrame = new JFrame();
+                                newFrame.setSize(400, 150);
+                                newFrame.setTitle("Result");
+                                newFrame.setResizable(false);
+                                newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                newFrame.setLayout(new FlowLayout());
+                                newFrame.setLocationRelativeTo(null);
+                                JLabel label = new JLabel("Invalid password. Failed to log in.");
+                                newFrame.add(label);
+                                newFrame.setVisible(true);
+                                JButton back = new JButton("Return");
+                                newFrame.add(back);
+                                back.addActionListener(new AbstractAction() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        String command2 = e.getActionCommand();
+                                        if ("Return".equals(command2)){
+                                            newFrame.dispose();
+                                        }
+                                    }
+                                });
+                            } else {
+                                //account does not exist
+                                testFrame.dispose();
+                                JFrame newFrame = new JFrame();
+                                newFrame.setSize(400, 150);
+                                newFrame.setTitle("Result");
+                                newFrame.setResizable(false);
+                                newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                newFrame.setLayout(new FlowLayout());
+                                newFrame.setLocationRelativeTo(null);
+                                JLabel label = new JLabel("Account does not exist.");
+                                newFrame.add(label);
+                                newFrame.setVisible(true);
+                                JButton back = new JButton("Return");
+                                newFrame.add(back);
+                                back.addActionListener(new AbstractAction() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        String command2 = e.getActionCommand();
+                                        if ("Return".equals(command2)){
+                                            newFrame.dispose();
+                                        }
+                                    }
+                                });
+                            }
+                        }
+
+                    }
+
+                });
+                testFrame.setVisible(true);
+            }
+        });
+        JButton signUp = new JButton("Sign Up");
+        frame.add(signUp);
+        signUp.setBounds(800,800, 800, 800);
+        signUp.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame testFrame = new JFrame("SIGN UP");
+                testFrame.setSize(400, 150);
+                testFrame.setResizable(false);
+                testFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                testFrame.setLocationRelativeTo(null);
+                testFrame.setLayout(new FlowLayout());
+
+                JButton enter = new JButton("Enter");
+                JLabel text = new JLabel("Enter username:");
+                JTextField textBook = new JTextField(20);
+                testFrame.add(text);
+                testFrame.add(textBook);
+                JLabel text2 = new JLabel("Enter password:");
+                JTextField textBook2 = new JTextField(20);
+                testFrame.add(text2);
+                testFrame.add(textBook2);
+                testFrame.add(enter);
+                enter.addActionListener(new AbstractAction() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String command = e.getActionCommand();
+                        if ("Enter".equals(command)){
+                            try {
+                                game.signUp(textBook, textBook2, testFrame);
+                            } catch (SQLException ex) {
+                                throw new RuntimeException(ex);
+                            } catch (ClassNotFoundException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                        }
+                    }
+                });
+                testFrame.setVisible(true);
+            }
+        });
+        frame.add(label2);
+        frame.add(logIn);
+        frame.add(signUp);
+        frame.setVisible(true);
+    }
+}
