@@ -46,7 +46,7 @@ public class User {
     //todo update balance in userAccout
     public static float updateBalanceInUserAccount(float bal, String s) throws SQLException {
         balance.changeBalance(bal);
-        String q = "UPDATE USERACCOUNT SET BALANCE = " + bal + " WHERE USERNAME = " + "\"" + s + "\"";
+        String q = "UPDATE USERACCOUNT SET BALANCE = " + balance.loadBalance() + " WHERE USERNAME = " + "\"" + s + "\"";
         statement  = conn.prepareStatement(q);
         statement.executeUpdate();
         return balance.loadBalance();

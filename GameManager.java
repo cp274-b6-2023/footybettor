@@ -3387,6 +3387,7 @@ public class GameManager {
                 if ("Enter".equals(command)) {
                     String input = textBook.getText();
                     if (checknumber(input)){
+                        testFrame.dispose();
                         float money = Float.parseFloat(input);
                         try {
                             user.updateBalanceInUserAccount(money, user.userName);
