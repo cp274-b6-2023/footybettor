@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
@@ -7,8 +6,8 @@ import java.util.ArrayList;
 
 public class CreateFixture {
 
-    public static Connection conn = null;
-    public static PreparedStatement statement = null;
+    private static Connection conn = null;
+    private static PreparedStatement statement = null;
     public static ArrayList<Fixture> fixtureList = new ArrayList<>();
     //static String fixtureFile;
 
@@ -44,7 +43,7 @@ public class CreateFixture {
         String query = "CREATE TABLE FIXTURE(fixid int(4), hometeam varchar(25), awayteam varchar(25), result varchar(8))";
         statement = conn.prepareStatement(query);
         statement.executeUpdate();
-        System.out.println("table made");
+        //System.out.println("table made");
 
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line = br.readLine();
@@ -61,7 +60,7 @@ public class CreateFixture {
             line = br.readLine();
         }
         br.close();
-        System.out.println("success: txt to sql");
+        //System.out.println("success: txt to sql");
     }
 
     private static void addDataToFixture(int id, String ht, String at, String win) throws SQLException {
@@ -74,7 +73,7 @@ public class CreateFixture {
         statement.executeUpdate();
     }
 
-    public static void addSQLToList() throws SQLException {
+    public static void addSQLToFixtureList() throws SQLException {
         Statement st = conn.createStatement();
         String q = "SELECT * from fixture";
 
@@ -111,6 +110,8 @@ public class CreateFixture {
 
         String homeString, awayString, resultString;
 
+        fixtureList.clear();
+
         for(int i = 0; i < 380; i++){
             homeString = homeTeam[i];
             awayString = awayTeam[i];
@@ -132,7 +133,7 @@ public class CreateFixture {
 
     public static void showFixtureList(){
         for (int i = 0; i < fixtureList.size(); i++){
-            System.out.println(fixtureList.get(i));
+            System.out.println((i+1) + " " + fixtureList.get(i));
         }
     }
 
@@ -141,12 +142,16 @@ public class CreateFixture {
         statement = conn.prepareStatement(query);
         ResultSet set = statement.executeQuery();
 
+        //int i = 1;
+
         while (set.next()){
             int id = set.getInt("fixid");
             String hTeam = set.getString("hometeam");
             String aTeam = set.getString("awayteam");
             String res = set.getString("result");
+            //System.out.print(i);
             System.out.format("%d, %s, %s, %s\n", id, hTeam,aTeam,res);
+            //i++;
         }
     }
 

@@ -4,32 +4,58 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
+import java.sql.*;
+
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 public class Main {
     private static String foldername;
+    private static User user = null;
+    private static Connection conn = null;
+    private static PreparedStatement statement = null;
 
-    public static boolean createfolder(String path) {
-        File file = null;
-        try {
-            file = new File(path);
-            if (!file.exists()) {
-                return file.mkdirs();
-            }else {
-                return false;
-            }
-        }catch(Exception e) {
-        }return false;
+    public static void checkAllTables() throws SQLException, ClassNotFoundException, IOException {
+
+        if(!userAccountExists()){
+            User.makeSQLUserTable();
+        } else{}
+
+        if(!teamStatExists()){
+            CreateTeamData.makeSQLTeamStatTable("pastSeason.txt");
+        } else{}
+
+        if(!gameTrackExists()){
+            TeamChoice.makeSQLGameTrackTable();
+        } else {}
+
+        if(!fixtureExists()){
+            CreateFixture.makeSQLFixtureTable("pySoccer.txt");
+        } else{}
+
+//        File file = null;
+//        try {
+//            file = new File(path);
+//            if (!file.exists()) {
+//                return file.mkdirs();
+//            }else {
+//                return false;
+//            }
+//        }catch(Exception e) {
+//        }return false;
     }
 
-    public static void main(String[] args) throws IOException {
-        foldername = "FootyBettor";
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
+        //foldername = "FootyBettor";
         GameManager game = new GameManager();
+        checkAllTables();
 
-        if(createfolder(foldername)){
-            System.out.println("Folder created!");
-        } else {
-            System.out.println("Folder exists.");
-        }
+
+//        if(createfolder(foldername)){
+//            System.out.println("Folder created!");
+//        } else {
+//            System.out.println("Folder exists.");
+//        }
         JFrame frame = new JFrame();
         frame.setTitle("FootyBettor");
         frame.setSize(500, 300);
@@ -68,7 +94,14 @@ public class Main {
                     public void actionPerformed(ActionEvent e) {
                         String command = e.getActionCommand();
                         if ("Enter".equals(command)){
-                            User user = game.login(textBook, textBook2);
+
+                            try {
+                                user = game.login(textBook, textBook2);
+                            } catch (SQLException ex) {
+                                throw new RuntimeException(ex);
+                            } catch (ClassNotFoundException ex) {
+                                throw new RuntimeException(ex);
+                            }
                             if(user.balance.loadBalance() != -10 && user.balance.loadBalance() != -20){
                                 System.out.println("Access Granted!");
 
@@ -97,18 +130,28 @@ public class Main {
                                             game.displayStat();
                                         } catch (IOException ex) {
                                             throw new RuntimeException(ex);
+                                        } catch (SQLException ex) {
+                                            throw new RuntimeException(ex);
+                                        } catch (ClassNotFoundException ex) {
+                                            throw new RuntimeException(ex);
                                         }
                                     }
                                 });
 
                                 JButton bet1 = new JButton("Start to bet with game number");
                                 bet1.setBounds(800,800, 800, 800);
+                                User finalUser = user;
+                                User finalUser1 = user;
                                 bet1.addActionListener(new AbstractAction() {
                                     @Override
                                     public void actionPerformed(ActionEvent e) {
                                         try {
                                             game.startBet1(user);
                                         } catch (IOException ex) {
+                                            throw new RuntimeException(ex);
+                                        } catch (SQLException ex) {
+                                            throw new RuntimeException(ex);
+                                        } catch (ClassNotFoundException ex) {
                                             throw new RuntimeException(ex);
                                         }
                                     }
@@ -122,6 +165,10 @@ public class Main {
                                         try {
                                             game.startBet2(user);
                                         } catch (IOException ex) {
+                                            throw new RuntimeException(ex);
+                                        } catch (SQLException ex) {
+                                            throw new RuntimeException(ex);
+                                        } catch (ClassNotFoundException ex) {
                                             throw new RuntimeException(ex);
                                         }
                                     }
@@ -247,7 +294,13 @@ public class Main {
                     public void actionPerformed(ActionEvent e) {
                         String command = e.getActionCommand();
                         if ("Enter".equals(command)){
-                            game.signUp(textBook, textBook2, testFrame);
+                            try {
+                                game.signUp(textBook, textBook2, testFrame);
+                            } catch (SQLException ex) {
+                                throw new RuntimeException(ex);
+                            } catch (ClassNotFoundException ex) {
+                                throw new RuntimeException(ex);
+                            }
 
                         }
                     }
@@ -259,5 +312,55 @@ public class Main {
         frame.add(logIn);
         frame.add(signUp);
         frame.setVisible(true);
+    }
+    private static boolean fixtureExists() throws SQLException, ClassNotFoundException {
+        boolean bool;
+        makeDBMainConn();
+        DatabaseMetaData dbm = conn.getMetaData();
+        ResultSet rs = dbm.getTables(null, null, "fixture", null);
+        if(rs.next()){
+            bool = TRUE;
+        } else {bool = FALSE; }
+        return bool;
+    }
+    private static boolean teamStatExists() throws SQLException, ClassNotFoundException {
+        boolean b;
+        makeDBMainConn();
+        DatabaseMetaData dbm = conn.getMetaData();
+        //String q = "SELECT IF( EXISTS( SELECT * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'teamstat'), 1, 0)";
+        //statement = conn.prepareStatement(q);
+        ResultSet rs = dbm.getTables(null,null,"teamstat", null);
+        if(rs.next()){
+            b = TRUE;
+        } else { b = FALSE; }
+        return b;
+    }
+    private static boolean userAccountExists() throws SQLException, ClassNotFoundException {
+        boolean b;
+        makeDBMainConn();
+        DatabaseMetaData dbm = conn.getMetaData();
+        //String q = "SELECT IF( EXISTS( SELECT * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'useraccount'), 1, 0)";
+        //statement = conn.prepareStatement(q);
+        ResultSet rs = dbm.getTables(null,null,"useraccount", null);
+        if(rs.next()){
+            b = TRUE;
+        } else { b = FALSE; }
+        return b;
+    }
+    private static boolean gameTrackExists() throws SQLException, ClassNotFoundException {
+        boolean b;
+        makeDBMainConn();
+        DatabaseMetaData dbm = conn.getMetaData();
+        //String q = "SELECT IF( EXISTS( SELECT * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'gametrack'), 1, 0)";
+        //statement = conn.prepareStatement(q);
+        ResultSet rs = dbm.getTables(null,null,"gametrack", null);
+        if(rs.next()){
+            b = TRUE;
+        } else { b = FALSE; }
+        return b;
+    }
+    private static void makeDBMainConn() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/mysql", "root", "root");
     }
 }
