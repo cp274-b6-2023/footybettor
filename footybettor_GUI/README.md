@@ -1,23 +1,13 @@
-# footybettor
+README Implementation
 
-Team Name: FootyBettor
- 
-Group Members: Zahra Cheeseman, Junhao Qu, Sham Kabir, Esa Chen 
+Process:
 
-Team's mission:
+1. Refer to the user documentation of a Windows command prompt, Apple terminal, or Linux terminal to clone a repository.
+2. Clone all the Java files from the footybettor_GUI folder into a local folder from the FootyBettor repository on GitHub.
+3. After completion of cloning, download the MAMP. Start the MAMP and get the MySQL port number 8889 in the preferences.
+4. Set up the connection in the DB browser in IntelliJ with the port number 8889, user "root," and password "root."
+5. Set up the Jar dependency in Modules in Project Structure in IntelliJ with the downloaded MySQL connector jar file.
+6. After connecting to the database, compile the java files to make sure everything is functional and then run the Main.java file to launch the program.
+7. After launching the program, follow the sequential instructions on the command line and enjoy betting!
 
-The overarching goal of the project is to revolutionize the way people bet on sports and make sports betting more accessible. 
-Our value is to provide our users with a comprehensive and user-friendly betting platform where bettors are more informed on 
-what they’re are betting for. With the complete and accessible team portfolio and historical teams’ performances data provided 
-by the platform, the bettors would be able to make more educated bets, make informed decisions, reduce risk, and maximize profits.
-
-Mission Statement: 
-
-Providing entertainment for all- exciting competition rooted in informed odds. 
-
-Design Problem:
-
-In this fast-paced, capitalistic world, it is easy to get overwhelmed by our constant, on-the-go culture. After an extremely busy and stressful week, people need to take a break and enjoy some time to themselves. If not, as time goes on, life for people becomes more tedious and society becomes more monotonous. Sports betting offers a unique form of entertainment that combines the excitement of sports with the thrill of gambling. Whether it's placing a bet on the favorite team, following the odds and making strategic wagers, or simply enjoying the ups and downs of a game with a personal stake in the outcome, there are existing sports betting websites that provide a level of engagement and entertainment that is unmatched in other forms of gambling. However, traditional betting platforms often provide problems such as limited data availability, implicit probability distribution, and complex operation pages. These challenges make it difficult for users to make informed decisions, place winning bets, and ultimately succeed in the highly competitive sports betting industry.
-
-
-
+Please note, the user does not have to download any external libraries or packages in order to run the betting program, only the files provided within the footybettor_GUI folder in the main branch of the repository on GitHub.
