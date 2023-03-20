@@ -16,21 +16,24 @@ public class Main {
     private static PreparedStatement statement = null;
 
     public static void checkAllTables() throws SQLException, ClassNotFoundException, IOException {
-
         if(!userAccountExists()){
+            User.madeUserToDBConn();
             User.makeSQLUserTable();
         } else{}
 
         if(!teamStatExists()){
-            CreateTeamData.makeSQLTeamStatTable("pastSeason.txt");
+            CreateTeamData.makeTeamStatToDBConn();
+            CreateTeamData.makeSQLTeamStatTable("src/pastSeason.txt");
         } else{}
 
         if(!gameTrackExists()){
+            TeamChoice.makeGameTrackToDBConn();
             TeamChoice.makeSQLGameTrackTable();
         } else {}
 
         if(!fixtureExists()){
-            CreateFixture.makeSQLFixtureTable("pySoccer.txt");
+            CreateFixture.makeFixToDBConn();
+            CreateFixture.makeSQLFixtureTable("src/pySoccer.txt");
         } else{}
 
 //        File file = null;
