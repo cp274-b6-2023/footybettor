@@ -18,19 +18,27 @@ public class Main {
     public static void checkAllTables() throws SQLException, ClassNotFoundException, IOException {
 
         if(!userAccountExists()){
+            User.madeUserToDBConn();
             User.makeSQLUserTable();
         } else{}
 
         if(!teamStatExists()){
+            CreateTeamData.makeTeamStatToDBConn();
             CreateTeamData.makeSQLTeamStatTable("pastSeason.txt");
+            CreateTeamData.addTeamStatFromFile("pastSeason.txt");
+            CreateTeamData.addSQLToTeamList();
         } else{}
 
         if(!gameTrackExists()){
+            TeamChoice.makeGameTrackToDBConn();
             TeamChoice.makeSQLGameTrackTable();
         } else {}
 
         if(!fixtureExists()){
+            CreateFixture.makeFixToDBConn();
             CreateFixture.makeSQLFixtureTable("pySoccer.txt");
+            CreateFixture.addFixtureFromFile("pySoccer.txt");
+            CreateFixture.addSQLToFixtureList();
         } else{}
 
 //        File file = null;
