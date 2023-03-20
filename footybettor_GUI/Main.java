@@ -25,7 +25,7 @@ public class Main {
         if(!teamStatExists()){
             CreateTeamData.makeTeamStatToDBConn();
             CreateTeamData.makeSQLTeamStatTable("src/pastSeason.txt");
-            CreateTeamData.addTeamStatFromFile("src/pastSeason.txt");
+            //CreateTeamData.addTeamStatFromFile("src/pastSeason.txt");
             CreateTeamData.addSQLToTeamList();
         } else{}
 
@@ -37,7 +37,7 @@ public class Main {
         if(!fixtureExists()){
             CreateFixture.makeFixToDBConn();
             CreateFixture.makeSQLFixtureTable("src/pySoccer.txt");
-            CreateFixture.addFixtureFromFile("src/pySoccer.txt");
+            //CreateFixture.addFixtureFromFile("src/pySoccer.txt");
             CreateFixture.addSQLToFixtureList();
         } else{}
 
