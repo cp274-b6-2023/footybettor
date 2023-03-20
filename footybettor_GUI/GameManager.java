@@ -141,9 +141,9 @@ public class GameManager {
                         } catch (ClassNotFoundException ex) {
                             throw new RuntimeException(ex);
                         }
-                        if (bool == false && choice_final > 0 && choice_final < CreateFixture.fixtureList.size()) {
-                            String team1choice = CreateFixture.fixtureList.get(choice_final).getHomeTeam();
-                            String team2choice = CreateFixture.fixtureList.get(choice_final).getAwayTeam();
+                        if (bool == false && choice_final > 0 && choice_final <= CreateFixture.fixtureList.size()) {
+                            String team1choice = CreateFixture.fixtureList.get(choice_final-1).getHomeTeam();
+                            String team2choice = CreateFixture.fixtureList.get(choice_final-1).getAwayTeam();
                             for (int j = 0; j < CreateTeamData.teamList.size(); j++) {
                                 if (team1choice.equals(CreateTeamData.teamList.get(j).getTeamName())) {
                                     team1[0] = j;
@@ -207,7 +207,7 @@ public class GameManager {
                                         newFrame.add(label);
 
 
-                                        String actualresult = CreateFixture.fixtureList.get(choice_final).getWinner();
+                                        String actualresult = CreateFixture.fixtureList.get(choice_final-1).getWinner();
                                         if (actualresult.equals("H")) {
                                             actual_result = 1;
                                         } else if (actualresult.equals("A")) {
