@@ -97,22 +97,22 @@ public class User {
         return bool;
     }
 
-    protected float addBalance(float money){
-        balance.changeBalance(money);
-        try {
-            FileWriter writer = new FileWriter("FootyBettor/"+userName+".txt");
-            writer.write("Username:" + userName + ",");
-            writer.write("\nPassword: "+ password + ",");
-            writer.write("\nBalance" + "," + balance.loadBalance() + ",");
-            writer.flush();
-            writer.close();
-
-        }catch(IOException ex) {
-            System.out.println("Error.addBalance");
-            ex.printStackTrace();
-        }
-        return balance.loadBalance();
-    }
+//    protected float addBalance(float money){
+//        balance.changeBalance(money);
+//        try {
+//            FileWriter writer = new FileWriter("FootyBettor/"+userName+".txt");
+//            writer.write("Username:" + userName + ",");
+//            writer.write("\nPassword: "+ password + ",");
+//            writer.write("\nBalance" + "," + balance.loadBalance() + ",");
+//            writer.flush();
+//            writer.close();
+//
+//        }catch(IOException ex) {
+//            System.out.println("Error.addBalance");
+//            ex.printStackTrace();
+//        }
+//        return balance.loadBalance();
+//    }
 
 
 }

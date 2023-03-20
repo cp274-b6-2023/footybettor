@@ -271,16 +271,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -314,16 +322,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -358,16 +374,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -397,17 +421,27 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
+
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
+
                                                                             }
                                                                             try {
                                                                                 BetCalc.updateGameTrackDBConn();
@@ -432,7 +466,11 @@ public class GameManager {
                                                                     //yes
                                                                     String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                     float add = Float.parseFloat(add_s);
-                                                                    user.addBalance(add);
+                                                                    try {
+                                                                        user.updateBalanceInUserAccount(add, user.userName);
+                                                                    } catch (SQLException ex) {
+                                                                        throw new RuntimeException(ex);
+                                                                    }
                                                                     JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                             "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -502,16 +540,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -545,16 +591,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -589,16 +643,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -628,16 +690,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -665,7 +735,11 @@ public class GameManager {
                                                                     //yes
                                                                     String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                     float add = Float.parseFloat(add_s);
-                                                                    user.addBalance(add);
+                                                                    try {
+                                                                        user.updateBalanceInUserAccount(add, user.userName);
+                                                                    } catch (SQLException ex) {
+                                                                        throw new RuntimeException(ex);
+                                                                    }
                                                                     JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                             "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -733,16 +807,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -776,16 +858,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -820,16 +910,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -859,16 +957,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -896,7 +1002,11 @@ public class GameManager {
                                                                     //yes
                                                                     String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                     float add = Float.parseFloat(add_s);
-                                                                    user.addBalance(add);
+                                                                    try {
+                                                                        user.updateBalanceInUserAccount(add, user.userName);
+                                                                    } catch (SQLException ex) {
+                                                                        throw new RuntimeException(ex);
+                                                                    }
                                                                     JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                             "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1006,16 +1116,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1049,16 +1167,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1093,16 +1219,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1132,16 +1266,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1169,7 +1311,11 @@ public class GameManager {
                                                                     //yes
                                                                     String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                     float add = Float.parseFloat(add_s);
-                                                                    user.addBalance(add);
+                                                                    try {
+                                                                        user.updateBalanceInUserAccount(add, user.userName);
+                                                                    } catch (SQLException ex) {
+                                                                        throw new RuntimeException(ex);
+                                                                    }
                                                                     JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                             "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1239,16 +1385,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1282,16 +1436,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1326,16 +1488,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1365,16 +1535,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1402,7 +1580,11 @@ public class GameManager {
                                                                     //yes
                                                                     String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                     float add = Float.parseFloat(add_s);
-                                                                    user.addBalance(add);
+                                                                    try {
+                                                                        user.updateBalanceInUserAccount(add, user.userName);
+                                                                    } catch (SQLException ex) {
+                                                                        throw new RuntimeException(ex);
+                                                                    }
                                                                     JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                             "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1471,16 +1653,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1514,16 +1704,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1558,16 +1756,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1597,16 +1803,24 @@ public class GameManager {
 
                                                                             BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                             if (betcalc.calcReturn() > 0) {
-                                                                                user.addBalance(userwager * (-1));
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(donate[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                             } else {
-                                                                                user.addBalance(fee[0] * (-1));
-                                                                                user.addBalance(betcalc.calcReturn());
+                                                                                try {
+                                                                                    user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                    user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                                } catch (SQLException ex) {
+                                                                                    throw new RuntimeException(ex);
+                                                                                }
                                                                                 JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1634,7 +1848,11 @@ public class GameManager {
                                                                     //yes
                                                                     String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                     float add = Float.parseFloat(add_s);
-                                                                    user.addBalance(add);
+                                                                    try {
+                                                                        user.updateBalanceInUserAccount(add, user.userName);
+                                                                    } catch (SQLException ex) {
+                                                                        throw new RuntimeException(ex);
+                                                                    }
                                                                     JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                             "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1936,16 +2154,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -1979,16 +2205,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2023,16 +2257,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2062,16 +2304,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2099,7 +2349,11 @@ public class GameManager {
                                                                 //yes
                                                                 String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                 float add = Float.parseFloat(add_s);
-                                                                user.addBalance(add);
+                                                                try {
+                                                                    user.updateBalanceInUserAccount(add, user.userName);
+                                                                } catch (SQLException ex) {
+                                                                    throw new RuntimeException(ex);
+                                                                }
                                                                 JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2169,16 +2423,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2212,16 +2474,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2256,16 +2526,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2295,16 +2573,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2332,7 +2618,11 @@ public class GameManager {
                                                                 //yes
                                                                 String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                 float add = Float.parseFloat(add_s);
-                                                                user.addBalance(add);
+                                                                try {
+                                                                    user.updateBalanceInUserAccount(add, user.userName);
+                                                                } catch (SQLException ex) {
+                                                                    throw new RuntimeException(ex);
+                                                                }
                                                                 JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2400,16 +2690,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2443,16 +2741,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2487,16 +2793,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2526,16 +2840,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2563,7 +2885,11 @@ public class GameManager {
                                                                 //yes
                                                                 String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                 float add = Float.parseFloat(add_s);
-                                                                user.addBalance(add);
+                                                                try {
+                                                                    user.updateBalanceInUserAccount(add, user.userName);
+                                                                } catch (SQLException ex) {
+                                                                    throw new RuntimeException(ex);
+                                                                }
                                                                 JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2672,16 +2998,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2715,16 +3049,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2759,16 +3101,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2798,16 +3148,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2835,7 +3193,11 @@ public class GameManager {
                                                                 //yes
                                                                 String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                 float add = Float.parseFloat(add_s);
-                                                                user.addBalance(add);
+                                                                try {
+                                                                    user.updateBalanceInUserAccount(add, user.userName);
+                                                                } catch (SQLException ex) {
+                                                                    throw new RuntimeException(ex);
+                                                                }
                                                                 JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2905,16 +3267,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2948,16 +3318,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -2992,16 +3370,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -3031,16 +3417,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -3068,7 +3462,11 @@ public class GameManager {
                                                                 //yes
                                                                 String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                 float add = Float.parseFloat(add_s);
-                                                                user.addBalance(add);
+                                                                try {
+                                                                    user.updateBalanceInUserAccount(add, user.userName);
+                                                                } catch (SQLException ex) {
+                                                                    throw new RuntimeException(ex);
+                                                                }
                                                                 JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -3136,16 +3534,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -3179,16 +3585,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -3223,16 +3637,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -3262,16 +3684,24 @@ public class GameManager {
 
                                                                         BetCalc betcalc = new BetCalc(userresult, userwager, actual_result, odd.findOdd(userchoice));
                                                                         if (betcalc.calcReturn() > 0) {
-                                                                            user.addBalance(userwager * (-1));
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(donate[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(userwager * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(donate[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You won: $" + betcalc.calcReturn() + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
                                                                         } else {
-                                                                            user.addBalance(fee[0] * (-1));
-                                                                            user.addBalance(betcalc.calcReturn());
+                                                                            try {
+                                                                                user.updateBalanceInUserAccount(fee[0] * (-1), user.userName);
+                                                                                user.updateBalanceInUserAccount(betcalc.calcReturn(), user.userName);
+                                                                            } catch (SQLException ex) {
+                                                                                throw new RuntimeException(ex);
+                                                                            }
                                                                             JOptionPane.showMessageDialog(null, "You lost: $" + betcalc.calcReturn() * (-1) + "\nCurrent Balance: $" + user.balance.loadBalance(),
                                                                                     "Result", JOptionPane.PLAIN_MESSAGE);
 
@@ -3299,7 +3729,11 @@ public class GameManager {
                                                                 //yes
                                                                 String add_s = JOptionPane.showInputDialog("Enter amount of money to add:");
                                                                 float add = Float.parseFloat(add_s);
-                                                                user.addBalance(add);
+                                                                try {
+                                                                    user.updateBalanceInUserAccount(add, user.userName);
+                                                                } catch (SQLException ex) {
+                                                                    throw new RuntimeException(ex);
+                                                                }
                                                                 JOptionPane.showMessageDialog(null, "$" + add_s + " has been added." + "\nYour current balance: $" + user.balance.loadBalance(),
                                                                         "Result", JOptionPane.PLAIN_MESSAGE);
 
