@@ -16,6 +16,7 @@ public class Main {
     private static PreparedStatement statement = null;
 
     public static void checkAllTables() throws SQLException, ClassNotFoundException, IOException {
+
         if(!userAccountExists()){
             User.madeUserToDBConn();
             User.makeSQLUserTable();
@@ -23,7 +24,9 @@ public class Main {
 
         if(!teamStatExists()){
             CreateTeamData.makeTeamStatToDBConn();
-            CreateTeamData.makeSQLTeamStatTable("src/pastSeason.txt");
+            CreateTeamData.makeSQLTeamStatTable("pastSeason.txt");
+            CreateTeamData.addTeamStatFromFile("pastSeason.txt");
+            CreateTeamData.addSQLToTeamList();
         } else{}
 
         if(!gameTrackExists()){
@@ -33,7 +36,9 @@ public class Main {
 
         if(!fixtureExists()){
             CreateFixture.makeFixToDBConn();
-            CreateFixture.makeSQLFixtureTable("src/pySoccer.txt");
+            CreateFixture.makeSQLFixtureTable("pySoccer.txt");
+            CreateFixture.addFixtureFromFile("pySoccer.txt");
+            CreateFixture.addSQLToFixtureList();
         } else{}
 
 //        File file = null;

@@ -77,6 +77,7 @@ public class CreateFixture {
         Statement st = conn.createStatement();
         String q = "SELECT * from fixture";
 
+
         ResultSet rs_home = st.executeQuery(q);
         String[] homeTeam = new String[380];
         int home_i = 0;
