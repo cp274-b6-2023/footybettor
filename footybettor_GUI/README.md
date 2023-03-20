@@ -8,4 +8,4 @@ Process:
 
 
 Please note, the user does not have to download any external libraries or packages in order to run the betting program, only the files provided within 
-the footybettor_CML folder in the main branch of the repository on GitHub. 
+the footybettor_GUI folder in the main branch of the repository on GitHub. 
