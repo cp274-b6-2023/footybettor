@@ -2009,12 +2009,17 @@ public class GameManager {
                 String command = e.getActionCommand();
                 testFrame.dispose();
                 if ("Enter".equals(command)) {
-                    String homeTeam = textBook.getText();
-                    String awayTeam = textBook2.getText();
+                    
+                    String homeTeam = textBook.getText().toLowerCase();
+                    String awayTeam = textBook2.getText().toLowerCase();
+                    
+                    //String homeTeam = textBook.getText();
+                    //String awayTeam = textBook2.getText();
+                    
                     boolean flag = false;
                     ///original i = 1
                     for (int i = 0; i < CreateFixture.fixtureList.size(); i++) {
-                        if (homeTeam.equals(CreateFixture.fixtureList.get(i).getHomeTeam()) && awayTeam.equals(CreateFixture.fixtureList.get(i).getAwayTeam())) {
+                        if (homeTeam.equals(CreateFixture.fixtureList.get(i).getHomeTeam().toLowerCase()) && awayTeam.equals(CreateFixture.fixtureList.get(i).getAwayTeam().toLowerCase())) {
                             flag = true;
                             index[0] = i;
                         }
