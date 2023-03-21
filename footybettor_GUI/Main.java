@@ -217,32 +217,9 @@ public class Main {
                                 frame.add(exit);
                                 frame.setVisible(true);
 
-                            } else if (user.balance.loadBalance() == -10){
-                                //account does exist, but wrong password
-                                testFrame.dispose();
-                                JFrame newFrame = new JFrame();
-                                newFrame.setSize(400, 150);
-                                newFrame.setTitle("Result");
-                                newFrame.setResizable(false);
-                                newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                                newFrame.setLayout(new FlowLayout());
-                                newFrame.setLocationRelativeTo(null);
-                                JLabel label = new JLabel("Invalid password. Failed to log in.");
-                                newFrame.add(label);
-                                newFrame.setVisible(true);
-                                JButton back = new JButton("Return");
-                                newFrame.add(back);
-                                back.addActionListener(new AbstractAction() {
-                                    @Override
-                                    public void actionPerformed(ActionEvent e) {
-                                        String command2 = e.getActionCommand();
-                                        if ("Return".equals(command2)){
-                                            newFrame.dispose();
-                                        }
-                                    }
-                                });
+                       
                             } else {
-                                //account does not exist
+                          
                                 testFrame.dispose();
                                 JFrame newFrame = new JFrame();
                                 newFrame.setSize(400, 150);
@@ -251,7 +228,7 @@ public class Main {
                                 newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                                 newFrame.setLayout(new FlowLayout());
                                 newFrame.setLocationRelativeTo(null);
-                                JLabel label = new JLabel("Account does not exist.");
+                                JLabel label = new JLabel("Invalid username or password. Failed to log in.");
                                 newFrame.add(label);
                                 newFrame.setVisible(true);
                                 JButton back = new JButton("Return");
